@@ -1,3 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-echo Hello World
+source components/common.sh
+checkRootUser
+COMPONENT=catalogue
+NODEJS
