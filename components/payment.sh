@@ -2,5 +2,7 @@
 
 source components/common.sh
 checkRootUser
-COMPONENT=cart
-NODEJS
+COMPONENT=payment
+
+PYTHON
+

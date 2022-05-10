@@ -30,6 +30,13 @@ ECHO "Copy RoboShop Nginx Config"
 mv localhost.conf /etc/nginx/default.d/roboshop.conf &>>${LOG_FILE}
 statusCheck $?
 
+ECHO "Update Nginx Configuration"
+for component in catalogue user cart shipping payment ; do
+  ECHO "Update Configuration for ${component}"
+  sed -i -e "/${component}/ s/localhost/${component}.roboshop.internal/"  /etc/nginx/default.d/roboshop.conf
+  statusCheck $?
+done
+
 ECHO "Start Nginx Service"
 systemctl enable nginx &>>${LOG_FILE} && systemctl restart nginx &>>${LOG_FILE}
 statusCheck $?
